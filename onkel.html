@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Für meinen Onkel</title>
+    <style>
+        /* Design: Dunkel / Schwarz */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            overflow: hidden;
+            /* Verhindert das Markieren von Text beim schnellen Klicken */
+            user-select: none; 
+            -webkit-user-select: none;
+        }
+
+        /* Start-Bildschirm */
+        #intro-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            cursor: pointer;
+            transition: opacity 0.8s ease-out;
+            padding: 20px;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+            background-color: #121212;
+        }
+
+        #intro-text {
+            font-size: 2rem;
+            font-weight: 300;
+            line-height: 1;
+            max-width: 800px;
+        }
+
+        .click-hint {
+            margin-top: 40px;
+            font-size: 1rem;
+            color: #888;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        /* Slideshow Container */
+        #slideshow-container {
+            display: none; /* Am Anfang versteckt */
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-color: #000;
+            cursor: pointer; /* Zeigt die Hand an, signalisiert "klickbar" */
+        }
+
+        /* Bilder */
+        .mySlides {
+            display: none;
+            height: 100vh;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* Flexbox zum Zentrieren des Bildes */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mySlides img {
+            max-width: 95%;
+            max-height: 95%;
+            width: auto;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+            object-fit: contain;
+            pointer-events: none; /* Klicks gehen durch das Bild auf den Container */
+        }
+
+        /* Animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: 0.4}
+            to {opacity: 1}
+        }
+    </style>
+</head>
+<body>
+
+    <div id="intro-container" onclick="startSlideshow()">
+<h1 id="intro-text">
+Lieber Andy,<br><br>
+zu deinem 50. Geburtstag möchte ich dir sagen, wie unendlich wertvoll die gemeinsame Zeit für mich ist. Wenn ich an die vergangenen Jahre denke, fallen mir so viele wunderschöne Momente ein, die du uns geschenkt hast.<br><br>
+Es ist ein großes Glück, dich als Onkel zu haben, und ich bin dankbar für jeden Augenblick, den wir zusammen verbracht haben. Ich wünsche dir von ganzem Herzen nur das Beste und möchte, dass du weißt, dass ich dich lieb habe.<br><br>
+Hier sind ein paar der schönen Momente.
+</h1>
+        <p class="click-hint">(Tippe auf den Bildschirm)</p>
+    </div>
+
+    <div id="slideshow-container" onclick="nextSlide()">
+        <div class="mySlides fade"><img src="1.jpg" alt="Bild 1"></div>
+        <div class="mySlides fade"><img src="2.jpg" alt="Bild 2"></div>
+        <div class="mySlides fade"><img src="3.jpg" alt="Bild 3"></div>
+        <div class="mySlides fade"><img src="4.jpg" alt="Bild 4"></div>
+        <div class="mySlides fade"><img src="5.jpg" alt="Bild 5"></div>
+        <div class="mySlides fade"><img src="6.jpg" alt="Bild 6"></div>
+        <div class="mySlides fade"><img src="7.jpg" alt="Bild 7"></div>
+        <div class="mySlides fade"><img src="8.jpg" alt="Bild 8"></div>
+        <div class="mySlides fade"><img src="9.jpg" alt="Bild 9"></div>
+        <div class="mySlides fade"><img src="10.jpg" alt="Bild 10"></div>
+        <div class="mySlides fade"><img src="11.jpg" alt="Bild 11"></div>
+        <div class="mySlides fade"><img src="12.jpg" alt="Bild 12"></div>
+        <div class="mySlides fade"><img src="13.jpg" alt="Bild 13"></div>
+        <div class="mySlides fade"><img src="14.jpg" alt="Bild 14"></div>
+        <div class="mySlides fade"><img src="15.jpg" alt="Bild 15"></div>
+        <div class="mySlides fade"><img src="16.jpg" alt="Bild 16"></div>
+        <div class="mySlides fade"><img src="17.jpg" alt="Bild 17"></div>
+        <div class="mySlides fade"><img src="18.jpg" alt="Bild 18"></div>
+        <div class="mySlides fade"><img src="19.jpg" alt="Bild 19"></div>
+        <div class="mySlides fade"><img src="20.jpg" alt="Bild 20"></div>
+        <div class="mySlides fade"><img src="21.jpg" alt="Bild 21"></div>
+        <div class="mySlides fade"><img src="22.jpg" alt="Bild 22"></div>
+        <div class="mySlides fade"><img src="23.jpg" alt="Bild 23"></div>
+        <div class="mySlides fade"><img src="24.jpg" alt="Bild 24"></div>
+        <div class="mySlides fade"><img src="25.jpg" alt="Bild 25"></div>
+        <div class="mySlides fade"><img src="26.jpg" alt="Bild 26"></div>
+        <div class="mySlides fade"><img src="27.jpg" alt="Bild 27"></div>
+        <div class="mySlides fade"><img src="28.jpg" alt="Bild 28"></div>
+        <div class="mySlides fade"><img src="29.jpg" alt="Bild 29"></div>
+        <div class="mySlides fade"><img src="30.jpg" alt="Bild 30"></div>
+        <div class="mySlides fade"><img src="31.jpg" alt="Bild 31"></div>
+        <div class="mySlides fade"><img src="32.jpg" alt="Bild 32"></div>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+
+        // Funktion 1: Startet die Slideshow (versteckt Intro)
+        function startSlideshow() {
+            const intro = document.getElementById('intro-container');
+            const slideshow = document.getElementById('slideshow-container');
+
+            intro.style.opacity = '0';
+            
+            setTimeout(() => {
+                intro.style.display = 'none';
+                slideshow.style.display = 'block';
+                showSlides(slideIndex); // Zeigt das erste Bild
+            }, 800);
+        }
+
+        // Funktion 2: Nächstes Bild bei Klick
+        function nextSlide() {
+            slideIndex++;
+            showSlides(slideIndex);
+        }
+
+        // Funktion 3: Logik zum Anzeigen
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            
+            // Wenn wir über Bild 32 hinaus sind, fang bei 1 wieder an
+            if (n > slides.length) {slideIndex = 1}
+            
+            // Alle verstecken
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            
+            // Nur das aktuelle zeigen (mit Flexbox für Zentrierung)
+            slides[slideIndex-1].style.display = "flex";  
+        }
+    </script>
+
+</body>
+</html>
