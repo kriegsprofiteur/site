@@ -2,19 +2,22 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Für Andy</title>
     <style>
         /* Design: Dunkel / Schwarz */
         body, html {
             height: 100%;
             margin: 0;
+            padding: 0;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #121212;
             color: #e0e0e0;
-            overflow: hidden;
+            overflow: hidden; /* Kein Scrollen erlaubt */
+            /* Verhindert das Markieren von Text beim Tippen */
             user-select: none; 
             -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent; /* Entfernt blaues Aufleuchten bei Touch */
         }
 
         /* Start-Bildschirm */
@@ -23,27 +26,31 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 100%; /* Volle Höhe */
+            width: 100%;
             text-align: center;
             cursor: pointer;
             transition: opacity 0.8s ease-out;
-            padding: 20px;
             position: absolute;
-            width: 100%;
             z-index: 10;
             background-color: #121212;
+            box-sizing: border-box; /* Padding wird in Breite eingerechnet */
+            padding: 20px; /* Sicherheitsabstand zum Rand */
         }
 
         #intro-text {
-            font-size: 1.8rem; /* Etwas kleiner für den längeren Text */
+            /* Dynamische Schriftgröße: Mindestens 1.2rem, maximal 2rem, passt sich an */
+            font-size: clamp(1.1rem, 4vw, 2rem); 
             font-weight: 300;
-            line-height: 1.6;
+            line-height: 1.5;
             max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
         }
 
         .click-hint {
-            margin-top: 40px;
-            font-size: 1rem;
+            margin-top: 30px;
+            font-size: 0.9rem;
             color: #888;
             animation: pulse 2s infinite;
         }
@@ -59,7 +66,7 @@
             display: none;
             position: relative;
             width: 100%;
-            height: 100vh;
+            height: 100%;
             background-color: #000;
             cursor: pointer;
         }
@@ -67,7 +74,7 @@
         /* Bilder */
         .mySlides {
             display: none;
-            height: 100vh;
+            height: 100%;
             width: 100%;
             position: absolute;
             top: 0;
@@ -75,27 +82,40 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 10px; /* Kleiner Rand damit Bild nicht am Gehäuse klebt */
+            box-sizing: border-box;
         }
 
         .mySlides img {
-            max-width: 95%;
-            max-height: 95%;
+            /* Bild passt sich immer perfekt ein, egal ob Handy hochkant oder quer */
+            max-width: 100%;
+            max-height: 100%;
             width: auto;
             height: auto;
             border-radius: 4px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.8);
-            object-fit: contain;
+            object-fit: contain; /* Behält Seitenverhältnis bei */
             pointer-events: none;
         }
 
         .fade {
             animation-name: fade;
-            animation-duration: 1.5s;
+            animation-duration: 1.0s; /* Etwas schneller auf Mobile wirkt flüssiger */
         }
 
         @keyframes fade {
-            from {opacity: 0.4}
+            from {opacity: 0.2}
             to {opacity: 1}
+        }
+
+        /* Extra Anpassung für sehr kleine Handys */
+        @media screen and (max-width: 480px) {
+            #intro-text {
+                font-size: 1.1rem; /* Feste Größe für sehr kleine Screens damit alles draufpasst */
+            }
+            #intro-container {
+                padding: 15px;
+            }
         }
     </style>
 </head>
